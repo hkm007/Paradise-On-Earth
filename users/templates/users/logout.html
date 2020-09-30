@@ -1,0 +1,14 @@
+{% extends "blog/secondary.html" %}
+{% block title%} Paradise on Earth | Logged out {% endblock%}
+{% block content %}
+<div style="border: 1px solid;border-style: solid;border-radius: 15px;box-shadow: 5px  7px 3px gray; padding: 15px;margin-top: 40px;">
+    <h2>You have been logged out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a class = "btn btn-success" href="{% url 'login' %}">Log In Again</a>
+            <a class = "btn btn-dark" href="{% url 'home' %}">Home</a>
+            <a class = "btn btn-info" href="{% url 'blog-home' %}">Blogs</a>
+        </small>
+    </div>
+</div>
+{% endblock content %}

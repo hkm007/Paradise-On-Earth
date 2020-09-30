@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+  <title>{% block title %}{% endblock %}</title>
+</head> 
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: black;">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{% url 'home' %}"><b>Home</b></a>
+            <a class="nav-item nav-link" href="{% url 'blog-home' %}"><b>Blogs</b></a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'post-create' %}"><b>New Post</b></a>
+              <a class="nav-item nav-link" href="{% url 'profile' %}"><b>Profile</b></a>
+              <a class="nav-item nav-link" href="{% url 'logout' %}"><b>Logout</b></a>
+            {% else %}
+              <a class="nav-item nav-link" href="{% url 'login' %}"><b>Login</b></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+    <div class = "row" style = "margin-left:0.1px;margin-right:0.1px;background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);">
+      <div class = "col-md-2" style = "background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);"></div>
+      <div class = "col-md-1" ></div>
+      <div class = "col-md-6" style = "padding-bottom: 40px;min-height: 100vh;">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+    <div class = "col-md-1"></div>
+    <div class = "col-md-2" style = "background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);"></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+
+    <footer class="page-footer" style="background: black;padding-top: 15px;padding-bottom:15px;color:white;text-align: center;bottom:0;width:100%" id = "footer"></footer> 
+
+    <!-- External Javascript starts -->
+    <script src = "{% static 'blog/script.js' %}"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+    <title>Paradise on Earth | Homepage</title>
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background: black;">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'home' %}"><b>Home</b></a>
+              <a class="nav-item nav-link" href="{% url 'blog-home' %}"><b>Blogs</b></a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'post-create' %}"><b>New Post</b></a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}"><b>Profile</b></a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}"><b>Logout</b></a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}"><b>Login</b></a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'blog/images/img.jpg' %}" alt="..." style="background-size: cover;">
+          <div class="carousel-caption">
+            <h2 class="display-3 text-white">Paradise on Earth</h2>
+            <h5 class="text-white" style = "margin-top: 20px;">A blog on Tourism</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <main >
+    <div class="row" style = "margin-left:0.1px;margin-right:0.1px;background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);">  <!--style = "margin-left:1px;margin-right:1px;"-->
+      <div class="col-md-2"></div> <!--#c9ced6;-->
+      <div class = "col-md-1" ></div>
+      <div class = "col-md-6" style = "min-height: 75vh;padding-bottom:20px;margin-top:70px;">
+        <div class = "container" style = "padding:10px;padding-left:20px;padding-right:20px;border: 1px solid;border-style: solid;border-radius: 15px;box-shadow: 5px  7px 3px gray;background-color: white;">
+          <center><h2 style="font-family: 'Playfair Display', serif;font-weight: bold;font-style: initial;">Welcome to Paradise on Earth</h2></center><br>
+          <div class = "mainWhiteCont">
+            <p class="lead" style="text-align: justify; font-family: 'PT Serif', serif;">Blogs are the best platform where travel freaks, nature lover, explorer, sailor all kinda people got the opportunity to share their experiences and imaginations. We think, travel is another kind of world where you come to know more about yourself like a type of meditation, finding your inner world. Kudrat(Nature) is the best teacher of human kind and traveling is the path of getting that education, so lets start our journey towards nature and let the nature to be ours forever.</p> 
+          </div> 
+        </div>  
+      </div>
+      <div class = "col-md-1"></div>
+      <div class = "col-md-2"></div>
+    </div>
+  </main>
+
+    <footer class="page-footer" style="background: black;padding-top: 15px;padding-bottom:15px;color:white;text-align: center;bottom:0;width:100%" id = "footer"></footer> 
+
+    <!-- Footer -->
+
+    <!-- Javascript starts-->
+    <script src = "{% static 'blog/script.js' %}"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

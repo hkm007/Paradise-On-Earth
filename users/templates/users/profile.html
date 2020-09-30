@@ -1,0 +1,25 @@
+{% extends "blog/secondary.html" %}
+{% load crispy_forms_tags %}
+{% block title%} Paradise on Earth | User Profile {% endblock%}
+{% block content %}
+      <div class="content-section" style="margin-top:40px;border:1px solid;border-radius: 15px;box-shadow: 5px  7px 3px gray;">
+        <div class="media">
+          <img class = "rounded-circle account-img" src="{{ user.profile.image.url }}">  
+        </div>
+        <div class="media-body">
+          <h2 class="account-heading" style = "text-align: center;">{{ user.username }}</h2>
+          <p class="text-secondary" style = "white-space: pre-wrap;text-align: center;" >{{ user.email }}</p>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Info</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+      </div>
+{% endblock content %}

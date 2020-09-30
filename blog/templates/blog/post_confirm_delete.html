@@ -1,0 +1,17 @@
+{% extends "blog/secondary.html" %}
+{% block title %} Paradise On Earth | Post Confirm Page {% endblock %}
+{% block content %}
+<div class="content-section" style="margin-top:40px;border: 1px solid;border-style: solid;border-radius: 15px;box-shadow: 5px  7px 3px gray;">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete Post</legend>
+            <h2>Are you sure you want to delete the post <small style= "font-family: 'Lobster', cursive; color: skyblue;">"{{ object.title }}" </small>?</h2>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Yes, Delete</button>
+            <a class="btn btn-dark" href="{% url 'post-detail' object.id %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock content %}
